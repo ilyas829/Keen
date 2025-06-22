@@ -1,0 +1,8 @@
+requests==2.31.0
+pandas==2.1.4
+transformers==4.35.2
+torch==2.1.0
+# sqlite3
+streamlit==1.29.0
+plotly==5.18.0
+pyyaml==6.0.1

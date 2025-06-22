@@ -5,16 +5,18 @@ logger = logging.getLogger(__name__)
 
 def fetch_news(api_key, query, limit):
     """Fetch news through API"""
-    url = ""
+    url = "https://newsapi.org/v2/everything"
     params = {
-        "query":query,
-        "apiKey":api_key,
+        "q": query,  # Changed from 'query' to 'q'
+        "apiKey": api_key,
         "pageSize": limit,
-        "language": "en"
+        "language": "en",
     }
     try:
         response = requests.get(url, params= params)
         response.raise_for_status()
+        for respons in response:
+            logger.debug(f"Response: {respons}")
         articles = response.json().get("articles",[])
         logger.info(f"Fetched {len(articles)} articles.")
         return articles
